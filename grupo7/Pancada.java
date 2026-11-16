@@ -80,19 +80,19 @@ public class Pancada extends TeamRobot {
         ) * 2
     );
 
-    // Posição atual do inimigo
+    
     double anguloRadiano = Math.toRadians(anguloAbsoluto);
 
     inimigoX = getX() + Math.sin(anguloRadiano) * event.getDistance();
     inimigoY = getY() + Math.cos(anguloRadiano) * event.getDistance();
 
-    // Velocidade do inimigo
+    
     double direcaoRadiana = Math.toRadians(event.getHeading());
 
     velocidadeX = Math.sin(direcaoRadiana) * event.getVelocity();
     velocidadeY = Math.cos(direcaoRadiana) * event.getVelocity();
 
-    // Identificação do inimigo
+    
     if (!ultimoInimigo.equals(event.getName())) {
         ultimoInimigo = event.getName();
         direcaoAnterior = -1;
@@ -110,7 +110,7 @@ public class Pancada extends TeamRobot {
         + " | Distância: " + (int) ultimaDistancia
         + " | Velocidade: " + ultimaVelocidade);
 
-    // Verificação da mudança de direção
+    
     if (direcaoAnterior != -1) {
         mudouDirecao = Math.abs(
             Utils.normalRelativeAngleDegrees(
@@ -124,7 +124,7 @@ public class Pancada extends TeamRobot {
     out.println("INIMIGO MUDOU DE DIRECAO!");
     }
 
-    // Potência do disparo
+    
     double distancia = event.getDistance();
     double potencia;
 
@@ -140,14 +140,14 @@ public class Pancada extends TeamRobot {
         potencia = Math.min(potencia, 2);
     }
 
-    // Previsão da posição futura
+    
     double velocidadeProjetil = 20 - 3 * potencia;
     double tempo = distancia / velocidadeProjetil;
 
     double futuroX = inimigoX + velocidadeX * tempo;
     double futuroY = inimigoY + velocidadeY * tempo;
 
-    // Ajuste da mira
+    
     double anguloFuturo = Math.toDegrees(
         Math.atan2(futuroX - getX(), futuroY - getY())
     );
@@ -158,7 +158,7 @@ public class Pancada extends TeamRobot {
 
     setTurnGunRight(ajusteMira);
 
-    // Disparo
+    
     if (getGunHeat() == 0 &&
         Math.abs(getGunTurnRemaining()) < 2) {
 
