@@ -1,0 +1,7 @@
+#Robocode robot team
+#Tue Nov 17 16:18:48 BRT 2026
+team.description=Equipe formada por Pancada e Sentinela
+robocode.version=1.12.0
+team.author.name=Lianderson
+team.version=1.0
+team.members=grupo7.Pancada,grupo7.Sentinela
